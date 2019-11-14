@@ -38,7 +38,7 @@ async function getWeather(city: string) {
         }
     }).catch((err) => {
         log(err);
-    })
+    });
 }
 
 log(colors.green(`[Info]:输入Y停止请求`));
@@ -48,18 +48,18 @@ rl.on("line", (line) => {
         clearInterval(timer);
         rl.close();
     }
-})
+});
 rl.on("close", () => {
     log(colors.green(`[Info]:成功停止请求`));
-})
+});
 
 log(colors.green(`[Info]:2s 请求一次天气`));
-let postTimes = 0;//请求次数
+let postTimes = 0; // 请求次数
 const timer = setInterval(() => {
     getWeather(command.city);
     log(colors.green(`[Info]:当前请求第${postTimes + 1}次`));
     postTimes++;
-}, 2000)
+}, 2000);
 
 interface IWeatherResponse {
     status: string;
