@@ -1,14 +1,19 @@
 {
-  "devDependencies": {
-    "@types/node": "^12.12.7",
-    "husky": "^3.0.9",
-    "ts-node": "^8.5.2",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn tslint -c tslint.json './**/*.ts'"
-    }
-  }
+   "name": "demo2-express",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "@types/node": "^8.0.29",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   },
+   "dependencies": {
+      "express": "^4.17.1",
+      "reflect-metadata": "^0.1.10",
+      "sqlite3": "^4.0.3",
+      "typeorm": "0.2.20"
+   },
+   "scripts": {
+      "start": "ts-node src/index.ts"
+   }
 }
