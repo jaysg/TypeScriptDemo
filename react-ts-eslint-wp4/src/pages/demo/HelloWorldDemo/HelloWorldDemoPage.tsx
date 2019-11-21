@@ -2,6 +2,10 @@ import React from 'react';
 import { Routes } from '@/interfaces/router/Router';
 
 import Logo from './react-logo.svg';
+
+// import Button from 'antd/es/button';
+import { Button } from 'antd';
+
 import './HelloWorldDemoPage.less';
 
 const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
@@ -15,6 +19,9 @@ const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
+        <div>
+          <Button type="primary">Button</Button>
+        </div>
       </header>
     </div>
   );
