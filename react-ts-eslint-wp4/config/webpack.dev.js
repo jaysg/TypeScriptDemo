@@ -1,4 +1,3 @@
-const path = require('path');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -6,14 +5,15 @@ const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const webpack = require('webpack');
 const config = require('./config');
 const getClientEnvironment = require('./env');
+const assetsConfig = require('./assets.config')
 
-const env = getClientEnvironment(config.publicPath);
+const env = getClientEnvironment(assetsConfig.publicPath);
 
 module.exports = merge.smart(baseWebpackConfig, {
     mode: 'development',
     output: {
         filename: 'js/[name].[hash:8].js',
-        publicPath: config.publicPath // 这里可以省略
+        publicPath: assetsConfig.publicPath // 这里可以省略
     },
     module: {
         rules: [
@@ -24,7 +24,7 @@ module.exports = merge.smart(baseWebpackConfig, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: config.indexPath,
+            template: assetsConfig.indexPath,
             minify: {
                 html5: true
             },

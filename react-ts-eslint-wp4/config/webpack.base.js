@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const config = require('./config');
+const assetsConfig = require('./assets.config')
 const APP_PATH = path.resolve(__dirname, '../src');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -16,7 +16,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const getClientEnvironment = require('./env');
-const env = getClientEnvironment(config.publicPath);
+const env = getClientEnvironment(assetsConfig.publicPath);
 
 // 这个配置将合并到最后的配置中
 const webpackConfig = {
@@ -27,7 +27,7 @@ if (bundleAnalyzerReport) {
     webpackConfig.plugins.push(new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         openAnalyzer: false,
-        reportFilename: path.join(config.assetsRoot, './report.html')
+        reportFilename: path.join(assetsConfig.assetsRoot, './report.html')
     }));
 }
 
@@ -40,8 +40,8 @@ module.exports = merge(webpackConfig, {
     },
     output: {
         filename: 'js/[name].bundle.js',
-        path: config.assetsRoot,
-        publicPath: config.publicPath,
+        path: assetsConfig.assetsRoot,
+        publicPath: assetsConfig.publicPath,
         chunkFilename: "[name].chunk.js"
     },
     module: {
@@ -108,8 +108,8 @@ module.exports = merge(webpackConfig, {
                         options: {
                             limit: 8 * 1024,
                             name: 'img/[name].[hash:8].[ext]',
-                            outputPath: config.assetsDirectory,
-                            publicPath: config.assetsRoot
+                            outputPath: assetsConfig.assetsDirectory,
+                            publicPath: assetsConfig.assetsRoot
                         }
                     },
                     {
@@ -117,8 +117,8 @@ module.exports = merge(webpackConfig, {
                         loader: 'file-loader',
                         options: {
                             name: 'media/[path][name].[hash:8].[ext]',
-                            outputPath: config.assetsDirectory,
-                            publicPath: config.assetsRoot
+                            outputPath: assetsConfig.assetsDirectory,
+                            publicPath: assetsConfig.assetsRoot
                         }
                     },
                 ]
@@ -129,7 +129,7 @@ module.exports = merge(webpackConfig, {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             inject: true,
-            template: config.indexPath,
+            template: assetsConfig.indexPath,
             showErrors: true
         }),
         // 在html模板中能够使用环境变量

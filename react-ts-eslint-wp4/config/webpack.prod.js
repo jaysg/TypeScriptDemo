@@ -1,12 +1,12 @@
-const path = require('path');
 const merge = require('webpack-merge');
 const config = require('./config');
+const assetsConfig = require('./assets.config')
 const baseWebpackConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const getClientEnvironment = require('./env');
-const env = getClientEnvironment(config.publicPath);
+const env = getClientEnvironment(assetsConfig.publicPath);
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -69,8 +69,8 @@ module.exports = merge.smart(baseWebpackConfig, {
                         options: {
                             limit: 8 * 1024,
                             name: 'img/[name].[contenthash:8].[ext]',
-                            outputPath: config.assetsDirectory,
-                            publicPath: config.assetsRoot
+                            outputPath: assetsConfig.assetsDirectory,
+                            publicPath: assetsConfig.assetsRoot
                         }
                     },
                     {
@@ -78,8 +78,8 @@ module.exports = merge.smart(baseWebpackConfig, {
                         loader: 'file-loader',
                         options: {
                             name: 'media/[path][name].[contenthash:8].[ext]',
-                            outputPath: config.assetsDirectory,
-                            publicPath: config.assetsRoot
+                            outputPath: assetsConfig.assetsDirectory,
+                            publicPath: assetsConfig.assetsRoot
                         }
                     }
                 ]
@@ -100,7 +100,7 @@ module.exports = merge.smart(baseWebpackConfig, {
             // include:'allChunks'
         }),
         new HtmlWebpackPlugin({
-            template: config.indexPath,
+            template: assetsConfig.indexPath,
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
