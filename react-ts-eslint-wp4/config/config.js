@@ -18,6 +18,11 @@ module.exports = {
     watchOptions: {
       ignored: /node_modules/
     },
-    proxy: {}
+    // proxy: {
+    //   "/api": {
+    //     target: "https://janssen.dockertest.ilabservice.cloud",
+    //     secure: false
+    //   }
+    // }
   }
 };

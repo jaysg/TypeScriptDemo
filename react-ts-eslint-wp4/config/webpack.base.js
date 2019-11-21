@@ -76,7 +76,8 @@ module.exports = merge(webpackConfig, {
                                         ['@babel/preset-env', { useBuiltIns: 'usage', corejs: 2 }] // 按需使用polyfill
                                     ],
                                     plugins: [
-                                        ['@babel/plugin-proposal-class-properties', { 'loose': true }] // class中的箭头函数中的this指向组件
+                                        ['@babel/plugin-proposal-class-properties', { 'loose': true }], // class中的箭头函数中的this指向组件
+                                        ['import', { "libraryName": 'antd', style: true }]
                                     ],
                                     cacheDirectory: true // 加快编译速度
                                 }
@@ -93,9 +94,21 @@ module.exports = merge(webpackConfig, {
                         test: /\.(c|le)ss$/,
                         use: [
                             'style-loader',
-                            'css-loader',
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: false
+                                }
+                            },
                             'postcss-loader',
-                            'less-loader',
+                            {
+                                loader: 'less-loader',
+                                options: {
+                                    modules: false,
+                                    javascriptEnabled: true,//启动JS
+                                    // modifyVars: { "@primary-color": "yellow" } //修改UI库里面的less变量
+                                }
+                            }
                         ]
                     },
                     {

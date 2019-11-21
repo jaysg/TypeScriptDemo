@@ -17,6 +17,13 @@ export const routes = [
     name: 'home',
     title: 'HelloWorld'
   },
+  {
+    path: '/device',
+    exact: true,
+    component: loadable(() => import('@/pages/DeviceList')),
+    name: 'device',
+    title: 'Device List'
+  },
   // 404 Not Found
   {
     path: '*',

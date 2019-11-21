@@ -24,3 +24,6 @@ Steps to run this project:
 9. 优化开发体验
 10. 一些优化项目性能的建议
 
+### other
+
+1.引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档

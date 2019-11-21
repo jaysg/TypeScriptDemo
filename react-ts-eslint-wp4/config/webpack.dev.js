@@ -34,7 +34,13 @@ module.exports = merge.smart(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        ...config.devServer
+        ...config.devServer,
+        proxy: {
+            "/api/v2": {
+                target: "https://janssen.dockertest.ilabservice.cloud",
+                changeOrigin: true,
+            }
+        },
     },
     stats: {
         colors: true,
