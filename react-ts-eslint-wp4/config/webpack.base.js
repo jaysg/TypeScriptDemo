@@ -11,11 +11,12 @@ const merge = require('webpack-merge');
 
 const bundleAnalyzerReport = argv.report; // 根据命令参数是否含有 'report' 来决定是否生成报告
 
-//单独打包css
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 //复制静态资源到dist
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const InterpolateHtmlPlugin = require('interpolate-html-plugin');
+const getClientEnvironment = require('./env');
+const env = getClientEnvironment(config.publicPath);
 
 // 这个配置将合并到最后的配置中
 const webpackConfig = {
@@ -32,6 +33,7 @@ if (bundleAnalyzerReport) {
 
 // 改用merge来合并配置
 module.exports = merge(webpackConfig, {
+    devtool: 'cheap-module-eval-source-map',
     entry: {
         app: './src/index.tsx',
         vendor: ['react', 'react-dom'] // 不变的代码分包
@@ -45,11 +47,19 @@ module.exports = merge(webpackConfig, {
     module: {
         rules: [
             {
+                enforce: 'pre',
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                include: [APP_PATH],
+                loader: 'eslint-loader',
+                options: {
+                    emitWarning: true, // 这个配置需要打开，才能在控制台输出warning信息
+                    emitError: true, // 这个配置需要打开，才能在控制台输出error信息
+                    fix: true // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
+                }
+            },
+            {
                 oneOf: [
-                    {
-                        test: /\.svg$/,
-                        use: ['@svgr/webpack']
-                    },
                     {
                         test: /\.(html)$/,
                         loader: 'html-loader'
@@ -74,9 +84,7 @@ module.exports = merge(webpackConfig, {
                             {
                                 loader: 'awesome-typescript-loader',
                                 options: {
-                                    reportFiles: [
-                                        'src/**/*.{ts,tsx}'
-                                    ]
+                                    silent: true
                                 },
                             }
                         ]
@@ -84,11 +92,15 @@ module.exports = merge(webpackConfig, {
                     {
                         test: /\.(c|le)ss$/,
                         use: [
-                            MiniCssExtractPlugin.loader,
-                            "css-loader",
+                            'style-loader',
+                            'css-loader',
                             'postcss-loader',
                             'less-loader',
                         ]
+                    },
+                    {
+                        test: /\.svg$/,
+                        use: ['@svgr/webpack']
                     },
                     {
                         test: /\.(jpg|jpeg|bmp|png|webp|gif)$/,
@@ -108,36 +120,25 @@ module.exports = merge(webpackConfig, {
                             outputPath: config.assetsDirectory,
                             publicPath: config.assetsRoot
                         }
-                    }
+                    },
                 ]
             }
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: config.indexPath,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeOptionalTags: false,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                removeScriptTypeAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                removeAttributeQuotes: true,
-                removeCommentsFromCDATA: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
-            }
-        }),
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: "./css/[name].css"                     // 提取出来的css文件路径以及命名
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: config.indexPath,
+            showErrors: true
         }),
+        // 在html模板中能够使用环境变量
+        // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+        new InterpolateHtmlPlugin(env.raw),
+        // 在js代码中能够使用环境变量(demo: process.env.NODE_ENV === 'production')
+        new webpack.DefinePlugin(env.stringified),
+        // 忽略moment的国际化库
+        // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         new CopyWebpackPlugin([
             {
                 from: 'public',
@@ -145,24 +146,7 @@ module.exports = merge(webpackConfig, {
             }
         ]),
     ],
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            minChunks: 2,
-            maxInitialRequests: 5,
-            cacheGroups: {
-                // 提取公共模块
-                commons: {
-                    chunks: 'all',
-                    test: /[\\/]node_modules[\\/]/,
-                    minChunks: 2,
-                    maxInitialRequests: 5,
-                    minSize: 0,
-                    name: 'common'
-                }
-            }
-        }
-    },
+    optimization: {},
     resolve: {
         extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'], // 自动判断后缀名，引入时可以不带后缀
         alias: {
