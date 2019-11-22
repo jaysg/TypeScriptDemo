@@ -29,6 +29,7 @@
 
 ### 一些需要注意的事情
 1.git commit 报错 原因：Commitlint提交日志检查
+
     - 常用的type类别
     - upd：更新某功能（不是 feat, 不是 fix）
     - feat：新功能（feature）
