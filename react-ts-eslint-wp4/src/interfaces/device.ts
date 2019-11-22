@@ -1,4 +1,3 @@
-//增加用于设置标题的hook
 export interface Device {
   alertPushEnabled: number;
   assetId: string;

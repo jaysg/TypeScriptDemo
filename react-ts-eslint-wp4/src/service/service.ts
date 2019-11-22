@@ -31,7 +31,7 @@ export const login = (successCallbak: Function) => {
     }
   );
 };
-export const queryDeviceList = () => {
+export const queryDeviceList = (callback: Function) => {
   axiosDo(
     {
       method: 'get',
@@ -41,7 +41,7 @@ export const queryDeviceList = () => {
       if (res && res.status === 200) {
         const _res = res.data;
         if (_res.code === 0) {
-          console.log(_res.data);
+          callback(_res.data.list);
         }
       }
     }

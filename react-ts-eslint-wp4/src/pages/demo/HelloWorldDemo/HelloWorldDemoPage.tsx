@@ -7,6 +7,7 @@ import Logo from './react-logo.svg';
 import { Button } from 'antd';
 
 import './HelloWorldDemoPage.less';
+import { Link } from 'react-router-dom';
 
 const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
   return (
@@ -20,7 +21,9 @@ const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
           Learn React
         </a>
         <div>
-          <Button type="primary">Button</Button>
+          <Button type="primary">
+            <Link to="/device">Go Device List</Link>
+          </Button>
         </div>
       </header>
     </div>

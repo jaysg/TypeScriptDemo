@@ -24,6 +24,10 @@ Steps to run this project:
 9. 优化开发体验
 10. 一些优化项目性能的建议
 
-### other
+### log
 
 1.引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档
+2.引入axios 完成接口调用 login & 获得设备列表
+3.使用react hooks完成数据展示
+x.待定 封装axios
+x.待定 优化service和model的结构 
