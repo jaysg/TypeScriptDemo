@@ -1,3 +1,4 @@
+//粗略的写了一下，有待优化空间
 import { login, queryDeviceList } from '@/service/service';
 import { Device } from '@/interfaces/Device';
 

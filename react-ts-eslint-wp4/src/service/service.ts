@@ -1,3 +1,4 @@
+//粗略的使用axios实现了功能 but急迫需要封装一下axios
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 const axiosDo = (config: AxiosRequestConfig, callback: Function) => {
   axios(config)
