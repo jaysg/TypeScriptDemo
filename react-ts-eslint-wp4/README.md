@@ -26,3 +26,18 @@
 8. 使用规则来自动约束代码规范
 9. 优化开发体验
 10. 一些优化项目性能的建议
+
+### 一些需要注意的事情
+1.git commit 报错 原因：Commitlint提交日志检查
+    - 常用的type类别
+    - upd：更新某功能（不是 feat, 不是 fix）
+    - feat：新功能（feature）
+    - fix：修补bug
+    - docs：文档（documentation）
+    - style： 格式（不影响代码运行的变动）
+    - refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+    - test：增加测试
+    - chore：构建过程或辅助工具的变动
+
+    - git commit -m 'feat: 增加 xxx 功能'
+    - git commit -m 'bug: 修复 xxx 功能'
