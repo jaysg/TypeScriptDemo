@@ -1,15 +1,18 @@
-# 从零搭建webpack4+react+typescript+eslint脚手架
-
-Steps to run this project:
-
 ## 从一个空目录建立webpack+react+typescript+eslint脚手架
 
-### 工具版本
-1. webpack v4
-2. react v16.9
-3. typescript v3.5
-4. babel v7
-5. eslint v6.2
+### 更新日志
+
+1.引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档
+2.引入axios 完成接口调用 login & 获得设备列表
+3.使用react hooks完成数据展示
+
+### 后续计划
+
+- 封装axios
+- 优化service和model的结构 
+- 上线打包测试
+- 开发一个简单的大屏页面，测试postcss的性能和展示效果
+- 欢迎补充
 
 ### 涉及的内容大致包含：
 
@@ -23,11 +26,3 @@ Steps to run this project:
 8. 使用规则来自动约束代码规范
 9. 优化开发体验
 10. 一些优化项目性能的建议
-
-### log
-
-1.引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档
-2.引入axios 完成接口调用 login & 获得设备列表
-3.使用react hooks完成数据展示
-x.待定 封装axios
-x.待定 优化service和model的结构 
