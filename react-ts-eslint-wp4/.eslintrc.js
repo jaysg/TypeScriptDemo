@@ -30,13 +30,15 @@ module.exports = {
             "version": "detect" // 自动读取已安装的react版本
         }
     },
-    "plugins": ["@typescript-eslint", "react", "jsx-control-statements", "prettier"],
+    "plugins": ["@typescript-eslint", "react", "jsx-control-statements", "prettier", "react-hooks"],
     "rules": {
         "no-extra-semi": 0, // 禁止不必要的分号
         "quotes": ['error', 'single'], // 强制使用单引号
         "no-unused-vars": 0, // 不允许未定义的变量
         "prettier/prettier": 2,
-        "jsx-control-statements/jsx-use-if-tag": 0
+        "jsx-control-statements/jsx-use-if-tag": 0,
         // ...你自己的配置
+        "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+        "react-hooks/exhaustive-deps": "warn" // 检查 effect 的依赖
     }
 };
