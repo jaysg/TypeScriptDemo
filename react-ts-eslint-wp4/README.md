@@ -1,21 +1,21 @@
 ## 从一个空目录建立webpack+react+typescript+eslint脚手架
 
 ### 更新日志
-
+```
 1. 引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档
 2. 引入axios 完成接口调用 login & 获得设备列表
 3. 使用react hooks完成数据展示
 4. 11/25 封装request/axios请求库
-
+```
 ### 后续计划
-
+```
 - 优化service和model的结构 
 - 上线打包测试
 - 开发一个简单的大屏页面，测试postcss的性能和展示效果
 - 欢迎补充
-
+```
 ### 涉及的内容大致包含：
-
+```
 1. webpack的配置
 2. 对静态资源（图片，模板等）的处理
 3. 使react项目支持typescript，eslint，prettier等工具
@@ -26,10 +26,33 @@
 8. 使用规则来自动约束代码规范
 9. 优化开发体验
 10. 一些优化项目性能的建议
-
+```
+### 目录结构
+```
+├──  __test__               测试文件目录，暂未使用
+├── config                  项目配置文件目录
+├── dist                    生产目录
+├── public                  外部资源文件目录-会随着生产过程复制到dist目录下
+├── src                     项目主体
+│   ├── assets                  内部资源文件
+│   ├── interfaces              接口定义文件
+│   ├── model                   Model层数据处理 
+│   ├── service                 数据请求处理
+│   ├── types                   .d.ts 声明文件
+│   ├── utils                   工具文件目录
+│   └── pages                   业务组件
+├── .commitlintrc.js        GIT提交规则配置文件
+├── .editorconfig           帮助开发人员在不同的编辑器和IDE之间├──定义和维护一致的编码样式
+├── .env.*                  开发环境变量声明文件
+├── .eslintrc.js            eslint配置文件
+├── .prettierrc.js          代码格式化配置文件
+├── jest.config.js          jest测试单元配置文件
+├── postcss.config.js       POSTCSS配置文件
+└── tsconfig.json           指定了用来编译这个项目的根文件和编译选项。
+```
 ### 一些需要注意的事情
+```
 1. git commit 报错 原因：Commitlint提交日志检查
-
     - 常用的type类别
     - upd：更新某功能（不是 feat, 不是 fix）
     - feat：新功能（feature）
@@ -42,7 +65,8 @@
 
     - git commit -m 'feat: 增加 xxx 功能'
     - git commit -m 'bug: 修复 xxx 功能'
-
+```
 ### 其他
-
+```
 1. 为什么没用redux，引用大佬的一句话：“如果你不知道是否需要 Redux，那就是不需要它。”。在目前的架构中，组件状态共享，跨组件状态控制等常见redux的应用场景react hooks也能轻而易举的实现，that is why。
+```
