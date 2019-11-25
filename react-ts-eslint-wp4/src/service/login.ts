@@ -12,7 +12,7 @@ const LoginAPI = {
           password: 'ilabservice'
         }
       },
-      (res: ResponseObj) => {
+      (res: ResponseObj<any>) => {
         const token = res.data.token;
         localStorage.setItem('token', token);
         if (successCallback) successCallback();
