@@ -1,49 +1,36 @@
-//粗略的使用axios实现了功能 but急迫需要封装一下axios
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-const axiosDo = (config: AxiosRequestConfig, callback: Function) => {
-  axios(config)
-    .then(function(response) {
-      callback(response);
-    })
-    .catch(function(error) {
-      // handle error
-      console.log(error);
-    });
-};
+import axiosDo from './../utils/request';
+import { ResponseObj } from '@/interfaces/responseObj';
+import { message } from 'antd';
 
-export const login = (successCallbak: Function) => {
+export const login = (successCallback: Function) => {
   axiosDo(
     {
-      method: 'post',
       url: '/api/v2/unsecure/login',
+      method: 'post',
       data: {
         username: 'user2',
         password: 'ilabservice'
       }
     },
-    (res: AxiosResponse) => {
-      if (res && res.status === 200) {
-        const token = res.data.data.token;
-        localStorage.setItem('token', `Bearer ${token}`);
-        // axios.defaults.headers = ['X-Authorization', `Bearer ${token}`];
-        axios.defaults.headers.common['X-Authorization'] = `Bearer ${token}`;
-        successCallbak(res.data);
-      }
+    (res: ResponseObj) => {
+      console.log(res);
+      const token = res.data.token;
+      localStorage.setItem('token', token);
+      if (successCallback) successCallback();
     }
   );
 };
-export const queryDeviceList = (callback: Function) => {
+
+export const queryDeviceList = (successCallback: Function) => {
   axiosDo(
     {
-      method: 'get',
       url: '/api/v2/secure/customer/monitor_target_lab_device?limit=12&offset=0'
     },
-    (res: AxiosResponse) => {
-      if (res && res.status === 200) {
-        const _res = res.data;
-        if (_res.code === 0) {
-          callback(_res.data.list);
-        }
+    (res: ResponseObj) => {
+      if (res.code === 0 && successCallback) {
+        if (successCallback) successCallback(res.data.list);
+      } else {
+        message.error(res.message);
       }
     }
   );
