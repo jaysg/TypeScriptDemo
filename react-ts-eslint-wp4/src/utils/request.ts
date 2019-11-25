@@ -65,7 +65,7 @@ const axiosDo = (options: AxiosRequestConfig, successCallBack?: Function, failed
 
   axios({ ...newOptions })
     .then(response => {
-      const resData: ResponseObj = checkStatus(response);
+      const resData: ResponseObj<any> = checkStatus(response);
       if (successCallBack) successCallBack(resData);
     })
     .catch(function(error) {
