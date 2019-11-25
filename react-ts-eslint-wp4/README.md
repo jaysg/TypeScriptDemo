@@ -28,7 +28,7 @@
 10. 一些优化项目性能的建议
 
 ### 一些需要注意的事情
-1.git commit 报错 原因：Commitlint提交日志检查
+1. git commit 报错 原因：Commitlint提交日志检查
 
     - 常用的type类别
     - upd：更新某功能（不是 feat, 不是 fix）
@@ -42,3 +42,7 @@
 
     - git commit -m 'feat: 增加 xxx 功能'
     - git commit -m 'bug: 修复 xxx 功能'
+
+### 其他
+
+1. 为什么没用redux，引用大佬的一句话：“如果你不知道是否需要 Redux，那就是不需要它。”。在目前的架构中，组件状态共享，跨组件状态控制等常见redux的应用场景react hooks也能轻而易举的实现，that is why。
