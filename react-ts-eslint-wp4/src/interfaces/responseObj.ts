@@ -1,5 +1,10 @@
-export interface ResponseObj {
+export interface ResponseObj<T> {
   code: number;
-  data: any;
-  message: any;
+  data: T;
+  message: string;
+}
+
+export interface NormalListData<T> {
+  count: number;
+  list: Array<T>;
 }
