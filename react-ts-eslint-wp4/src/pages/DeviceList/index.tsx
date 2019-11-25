@@ -4,24 +4,22 @@ import './index.less';
 import { Routes } from '@/interfaces/router/Router';
 import { Device } from '@/interfaces/Device';
 import { ColumnProps } from 'antd/es/table';
-
 //引入hooks
 import React, { useState, useEffect } from 'react';
-
 //引入model
-import { dologin, getDeviceList } from '@/model/device';
-import { Table } from 'antd';
+import { getDeviceList } from '@/model/device';
+import { login } from '@/model/login';
+import { Table } from 'antd'; //引入组件库
 
 const DeviceList: React.FC<Routes> = (routes: Routes) => {
   const [deviceList, setDevices] = useState<Array<Device>>([]);
-  const [count, setC] = useState<number>(0);
 
   //相当于 state={isLogin:false} setIsLogin是一个自定义函数，用于设置当前state
   //等价于 (loginState)=>{this.setState({isLogin:loginState}) }
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    dologin(() => {
+    login(() => {
       getDeviceList(setDevices);
       setIsLogin(true);
     });
@@ -48,7 +46,6 @@ const DeviceList: React.FC<Routes> = (routes: Routes) => {
 
   return (
     <div>
-      <div onClick={() => setC(count + 1)}>点击数：{count}</div>
       <Table<Device>
         rowKey="id"
         dataSource={deviceList}
