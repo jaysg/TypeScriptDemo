@@ -2,13 +2,13 @@
 
 ### 更新日志
 
-1.引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档
-2.引入axios 完成接口调用 login & 获得设备列表
-3.使用react hooks完成数据展示
+1. 引入antd 并按需加载 使用babel-plugin-import 相关配置查看官方文档
+2. 引入axios 完成接口调用 login & 获得设备列表
+3. 使用react hooks完成数据展示
+4. 11/25 封装request/axios请求库
 
 ### 后续计划
 
-- 封装axios
 - 优化service和model的结构 
 - 上线打包测试
 - 开发一个简单的大屏页面，测试postcss的性能和展示效果
