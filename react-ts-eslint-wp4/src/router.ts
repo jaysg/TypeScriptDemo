@@ -24,6 +24,13 @@ export const routes = [
     name: 'device',
     title: 'Device List'
   },
+  {
+    path: '/counter',
+    exact: true,
+    component: loadable(() => import('@/pages/Counter')),
+    name: 'counter',
+    title: 'Counter'
+  },
   // 404 Not Found
   {
     path: '*',
