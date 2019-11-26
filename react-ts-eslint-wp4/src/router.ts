@@ -35,7 +35,7 @@ export const routes = [
   {
     path: '*',
     exact: true,
-    component: loadable(() => import('@/pages/demo/HelloWorldDemo/HelloWorldDemoPage')),
+    component: loadable(() => import('@/pages/Exception/404')),
     name: '404',
     title: '404'
   }
