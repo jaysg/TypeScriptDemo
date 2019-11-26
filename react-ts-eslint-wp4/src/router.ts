@@ -6,30 +6,38 @@ export const routes = [
   {
     path: '/',
     exact: true,
-    component: loadable(() => import('@/pages/demo/HelloWorldDemo/HelloWorldDemoPage')),
+    component: loadable(() => import('@/pages/HelloWorldDemo/HelloWorldDemoPage')),
     name: 'home',
     title: 'react-home'
   },
   {
     path: '/home',
     exact: true,
-    component: loadable(() => import('@/pages/demo/HelloWorldDemo/HelloWorldDemoPage')),
+    component: loadable(() => import('@/pages/HelloWorldDemo/HelloWorldDemoPage')),
     name: 'home',
     title: 'HelloWorld'
   },
   {
-    path: '/device',
+    path: '/devicelist',
     exact: true,
     component: loadable(() => import('@/pages/DeviceList')),
-    name: 'device',
+    name: 'devicelist',
     title: 'Device List'
   },
   {
     path: '/counter',
-    exact: true,
     component: loadable(() => import('@/pages/Counter')),
     name: 'counter',
-    title: 'Counter'
+    title: 'Counter',
+    routes: [
+      {
+        path: '/counter/detail',
+        exact: true,
+        component: loadable(() => import('@/pages/Counter/detail')),
+        name: 'counter detail',
+        title: 'Counter Detail'
+      }
+    ]
   },
   // 404 Not Found
   {

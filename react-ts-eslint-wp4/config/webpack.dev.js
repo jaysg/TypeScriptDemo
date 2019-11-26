@@ -11,6 +11,7 @@ const env = getClientEnvironment(assetsConfig.publicPath);
 
 module.exports = merge.smart(baseWebpackConfig, {
     mode: 'development',
+    devtool:'source-map',
     output: {
         filename: 'js/[name].[hash:8].js',
         publicPath: assetsConfig.publicPath // 这里可以省略

@@ -10,6 +10,7 @@ import './HelloWorldDemoPage.less';
 import { Link } from 'react-router-dom';
 
 const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
+  console.log(routes);
   return (
     <div className="App">
       <header className="App-header">
@@ -21,9 +22,18 @@ const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
           Learn React
         </a>
         <div>
-          <Button type="primary">
+          <Button type="primary" size="small">
+            <Link to="/detail">Go Detail</Link>
+          </Button>
+          {/* <Button type="primary" size="small">
             <Link to="/device">Go Device List</Link>
           </Button>
+          <Button type="primary" size="small">
+            <Link to="/counter">Go Counter</Link>
+          </Button>
+          <Button type="primary" size="small">
+            <Link to="/home/counter">Go Home Counter</Link>
+          </Button> */}
         </div>
       </header>
     </div>
