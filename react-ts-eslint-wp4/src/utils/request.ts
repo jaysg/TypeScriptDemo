@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import get from 'lodash/get';
 import { message } from 'antd';
 import { ResponseObj } from '@/interfaces/responseObj';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -28,7 +28,7 @@ const checkStatus = (response: AxiosResponse) => {
 
   //调用错误处理
   if (errorArr.indexOf(response.status) != -1) {
-    message.error(_.get(codeMessage, `[${response.status}]`));
+    message.error(get(codeMessage, `[${response.status}]`));
     if (response.status === 401) {
       //跳转到登录页
     }
@@ -38,7 +38,7 @@ const checkStatus = (response: AxiosResponse) => {
 
   //调用成功处理 默认200不提示
   if (successArr.indexOf(response.status) != -1) {
-    if (response.status != 200) message.success(_.get(codeMessage, `[${response.status}]`));
+    if (response.status != 200) message.success(get(codeMessage, `[${response.status}]`));
     return response.data;
   }
 

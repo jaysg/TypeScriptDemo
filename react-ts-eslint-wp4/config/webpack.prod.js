@@ -29,6 +29,9 @@ module.exports = merge.smart(baseWebpackConfig, {
     output: {
         filename: 'js/[name].[contenthash:8].js', // contenthash：只有模块的内容改变，才会改变hash值
     },
+    performance: {
+        hints: false
+    },
     plugins: [
         new CleanWebpackPlugin(),
     ],
@@ -129,7 +132,7 @@ module.exports = merge.smart(baseWebpackConfig, {
             filename: '[path].gz[query]',
             algorithm: 'gzip',
             test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-            threshold: 10240, // 大于这个大小的文件才会被压缩
+            threshold: 244, // 大于这个大小的文件才会被压缩
             minRatio: 0.8
         }),
     ],

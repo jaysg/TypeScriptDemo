@@ -1,10 +1,10 @@
 //引入接口
 import { Routes } from '@/interfaces/router/Router';
 //引入hooks
-import React, { useState, useReducer } from 'react';
+import React, { FC, useState, useReducer } from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
-import _ from 'lodash';
+import get from 'lodash/get';
 
 const initialState = { count: 0 };
 function reducer(state: any, action: any) {
@@ -25,7 +25,7 @@ const Counter: React.FC<Routes> = (routes: Routes) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   //子组件
-  const children = _.get(routes, 'children');
+  const children = get(routes, 'children');
 
   return (
     <div>
