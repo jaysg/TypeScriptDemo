@@ -132,17 +132,6 @@ module.exports = merge.smart(baseWebpackConfig, {
             threshold: 10240, // 大于这个大小的文件才会被压缩
             minRatio: 0.8
         }),
-        new PreloadWebpackPlugin({
-            rel: 'preload',
-            as(entry) {
-                if (/\.css$/.test(entry)) return 'style';
-                if (/\.woff$/.test(entry)) return 'font';
-                if (/\.png$/.test(entry)) return 'image';
-                return 'script';
-            },
-            include: ['app']
-            // include:'allChunks'
-        }),
     ],
     optimization: {
         splitChunks: {
