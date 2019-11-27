@@ -8,7 +8,7 @@ const LoginAPI = {
         url: '/api/v2/unsecure/login',
         method: 'post',
         data: {
-          username: 'user2',
+          username: 'y@y',
           password: 'ilabservice'
         }
       },

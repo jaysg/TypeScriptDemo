@@ -37,7 +37,7 @@ module.exports = merge.smart(baseWebpackConfig, {
         ...config.devServer,
         proxy: {
             "/api/v2": {
-                target: "https://janssen.dockertest.ilabservice.cloud",
+                target: "https://y.pre.intelab.cloud",
                 changeOrigin: true,
             }
         },
