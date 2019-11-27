@@ -38,3 +38,5 @@ typings/
 .next
 
 .vscode
+
+dist/
