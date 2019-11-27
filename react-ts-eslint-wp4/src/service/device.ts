@@ -1,7 +1,7 @@
 import axiosDo from './../utils/request';
 import { ResponseObj, NormalListData } from '@/interfaces/responseObj';
 import { message } from 'antd';
-import { Device } from '@/interfaces/Device';
+import { Device } from '@/interfaces/device';
 const DeviceAPI = {
   getDeviceList: (successCallback: Function) => {
     axiosDo(

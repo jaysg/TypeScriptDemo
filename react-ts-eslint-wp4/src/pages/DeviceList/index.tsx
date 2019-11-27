@@ -2,7 +2,7 @@
 import './index.less';
 //引入接口
 import { Routes } from '@/interfaces/router/Router';
-import { Device } from '@/interfaces/Device';
+import { Device } from '@/interfaces/device';
 import { ColumnProps } from 'antd/es/table';
 //引入hooks
 import React, { useState, useEffect } from 'react';
