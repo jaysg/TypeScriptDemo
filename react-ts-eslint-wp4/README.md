@@ -8,13 +8,13 @@
 4. 11/25 封装request/axios请求库
 5. 11/26 实现typescript+react-router-dom的嵌套路由
 6. 11/26 添加useReducer范例
+7. 11/27 本地&上线打包测试，成功https://management.demotest.ilabservice.cloud:8060
+8. 11/27 实现layout布局配合路由配置
 ```
 ### 后续计划
 ```
-- 实现layout布局配合路由配置
 - 实现全球化功能
 - 优化service和model的结构 
-- 上线打包测试
 - 开发一个简单的大屏页面，测试postcss的性能和展示效果
 - 欢迎补充
 ```

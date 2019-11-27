@@ -1,57 +1,20 @@
 //引入接口
 import { Routes } from '@/interfaces/router/Router';
 //引入hooks
-import React, { FC, useState, useReducer } from 'react';
-import { Button } from 'antd';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash/get';
 
-const initialState = { count: 0 };
-function reducer(state: any, action: any) {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    case 'reset':
-      return { count: 0 };
-    default:
-      throw new Error();
-  }
-}
-
 const Counter: React.FC<Routes> = (routes: Routes) => {
-  const [count, setCount] = useState<number>(0);
-  const [state, dispatch] = useReducer(reducer, initialState);
-
   //子组件
   const children = get(routes, 'children');
 
+  //路由控制仿tab子组件路由 ps：路由跳转不保留组件状态 如果要保留子组件状态，请使用antd/Tabs组件
   return (
     <div>
-      <p>
-        <Button
-          type="primary"
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        >
-          + Current：{count}
-        </Button>
-      </p>
-      <p>
-        <Button type="primary" onClick={() => dispatch({ type: 'increment' })}>
-          +
-        </Button>
-        <Button type="primary" onClick={() => dispatch({ type: 'decrement' })}>
-          -
-        </Button>
-        <Button type="primary" onClick={() => dispatch({ type: 'reset' })}>
-          C
-        </Button>
-        <span>{state.count}</span>
-      </p>
-      <Link to="/counter/detail">Go Detail</Link>
+      <Link to="/counter/detail">Show Detail</Link>
+      <br />
+      <Link to="/counter/detail2">Show Detail2</Link>
       {children}
     </div>
   );
