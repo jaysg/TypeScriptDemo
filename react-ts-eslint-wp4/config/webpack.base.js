@@ -116,13 +116,13 @@ module.exports = merge(webpackConfig, {
                         use: ['@svgr/webpack']
                     },
                     {
-                        test: /\.(jpg|jpeg|bmp|png|webp|gif)$/,
+                        test: /\.(png|jpg|gif)$/i,
                         loader: 'url-loader',
                         options: {
                             limit: 8 * 1024,
                             name: 'img/[name].[hash:8].[ext]',
                             outputPath: assetsConfig.assetsDirectory,
-                            publicPath: assetsConfig.assetsRoot
+                            // publicPath: assetsConfig.assetsRoot
                         }
                     },
                     {

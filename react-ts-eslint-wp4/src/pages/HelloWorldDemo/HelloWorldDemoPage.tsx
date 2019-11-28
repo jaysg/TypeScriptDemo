@@ -3,11 +3,7 @@ import { Routes } from '@/interfaces/router/Router';
 
 import Logo from './react-logo.svg';
 
-// import Button from 'antd/es/button';
-import { Button } from 'antd';
-
 import './HelloWorldDemoPage.less';
-import { Link } from 'react-router-dom';
 
 const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
   console.log(routes);
@@ -15,26 +11,6 @@ const HelloWorldDemoPage: React.FC<Routes> = (routes: Routes) => {
     <div className="App">
       <header className="App-header">
         <Logo className="App-logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-        <div>
-          <Button type="primary" size="small">
-            <Link to="/detail">Go Detail</Link>
-          </Button>
-          {/* <Button type="primary" size="small">
-            <Link to="/device">Go Device List</Link>
-          </Button>
-          <Button type="primary" size="small">
-            <Link to="/counter">Go Counter</Link>
-          </Button>
-          <Button type="primary" size="small">
-            <Link to="/home/counter">Go Home Counter</Link>
-          </Button> */}
-        </div>
       </header>
     </div>
   );

@@ -24,7 +24,7 @@ const BasicLayout: React.FC<Routes> = (routes: Routes) => {
       <Layout>
         <Sider></Sider>
         {/* <Sider collapsible={true}>Sider</Sider> */}
-        <Content>{children}</Content>
+        <Content className="banner">{children}</Content>
       </Layout>
       {/* <Footer>Footer</Footer> */}
     </Layout>
