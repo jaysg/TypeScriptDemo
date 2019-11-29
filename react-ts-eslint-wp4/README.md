@@ -10,6 +10,7 @@
 6. 11/26 添加useReducer范例
 7. 11/27 本地&上线打包测试，成功https://management.demotest.ilabservice.cloud:8060
 8. 11/27 实现layout布局配合路由配置
+9. 11/29 修复组件导入图片资源图裂的问题
 ```
 ### 后续计划
 ```
