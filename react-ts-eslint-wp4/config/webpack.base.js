@@ -3,7 +3,9 @@ const webpack = require('webpack');
 const assetsConfig = require('./assets.config')
 const APP_PATH = path.resolve(__dirname, '../src');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const argv = require('yargs').argv;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -93,6 +95,7 @@ module.exports = merge(webpackConfig, {
                     {
                         test: /\.(c|le)ss$/,
                         use: [
+                            // MiniCssExtractPlugin.loader,
                             'style-loader',
                             {
                                 loader: 'css-loader',
@@ -115,23 +118,36 @@ module.exports = merge(webpackConfig, {
                         test: /\.svg$/,
                         use: ['@svgr/webpack']
                     },
+                    // {
+                    //     test: /\.(png|jpg|gif)$/,
+                    //     use: [
+                    //         {
+                    //             loader: 'file-loader',
+                    //             options: {
+                    //                 name: '[name].[hash:8].[ext]',
+                    //                 publicPath: 'assets/',
+                    //                 outputPath: 'assets/'
+                    //             }
+                    //         }
+                    //     ]
+                    // }
                     {
-                        test: /\.(png|jpg|gif)$/i,
+                        test: /\.(png|jpg|gif)$/,
                         loader: 'url-loader',
                         options: {
                             limit: 8 * 1024,
-                            name: 'img/[name].[hash:8].[ext]',
+                            name: '[name].[hash:8].[ext]',
                             outputPath: assetsConfig.assetsDirectory,
-                            // publicPath: assetsConfig.assetsRoot
+                            publicPath: assetsConfig.assetsDirectory
                         }
                     },
                     {
                         exclude: [/\.(js|mjs|ts|tsx|less|css|jsx)$/, /\.html$/, /\.json$/],
                         loader: 'file-loader',
                         options: {
-                            name: 'media/[path][name].[hash:8].[ext]',
+                            name: '[path][name].[hash:8].[ext]',
                             outputPath: assetsConfig.assetsDirectory,
-                            publicPath: assetsConfig.assetsRoot
+                            publicPath: assetsConfig.assetsDirectory
                         }
                     },
                 ]
@@ -139,7 +155,7 @@ module.exports = merge(webpackConfig, {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             inject: true,
             template: assetsConfig.indexPath,
@@ -148,6 +164,9 @@ module.exports = merge(webpackConfig, {
         // 在html模板中能够使用环境变量
         // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
         new InterpolateHtmlPlugin(env.raw),
+        // new MiniCssExtractPlugin({
+        //     filename: 'css/[name].[contenthash:8].css'
+        // }),
         // 在js代码中能够使用环境变量(demo: process.env.NODE_ENV === 'production')
         new webpack.DefinePlugin(env.stringified),
         // 忽略moment的国际化库

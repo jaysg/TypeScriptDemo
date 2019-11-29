@@ -8,6 +8,8 @@ import get from 'lodash/get';
 import './BasicLayout.less';
 
 const { Header, Footer, Sider, Content } = Layout;
+import banner from '@/assets/banner_bg.jpg';
+console.log(banner);
 
 const BasicLayout: React.FC<Routes> = (routes: Routes) => {
   //子组件
@@ -24,7 +26,10 @@ const BasicLayout: React.FC<Routes> = (routes: Routes) => {
       <Layout>
         <Sider></Sider>
         {/* <Sider collapsible={true}>Sider</Sider> */}
-        <Content className="banner">{children}</Content>
+        <Content>
+          <img src={banner} style={{ height: 300, width: 400 }}></img>
+          {children}
+        </Content>
       </Layout>
       {/* <Footer>Footer</Footer> */}
     </Layout>
