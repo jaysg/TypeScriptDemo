@@ -42,3 +42,4 @@ typings/
 dist/
 
 .cache
+tsconfig.json

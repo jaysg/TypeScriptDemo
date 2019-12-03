@@ -4,7 +4,7 @@
 ```
 1. 初步生成parcel
 2. 引入typescript react react-dom antd less babel相关实现antd按需加载基础页面
-3. 进行中 移植react-ts-eslint-wp4中业务组件相关代码
+3. 移植react-ts-eslint-wp4中业务组件相关代码（差个svg渲染失败问题未解决）
 ```
 ### 后续计划
 ```
