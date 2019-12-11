@@ -1,13 +1,29 @@
-.bg {
+.layoutBg {
   height: 100vh;
+  background: url(../assets/banner_bg.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-.margin {
-  margin: 0 10px;
+.cus-layout {
+  background: transparent;
+  overflow: auto;
 }
 
-.banner {
-  width: 100%;
-  height: 300px;
-  background: url('../assets/banner_bg.jpg') 100% 100% no-repeat;
+.cus-footer,
+.cus-header {
+  background: transparent;
+  color: @primary-color;
+  font-size: calc(10px + 3vmin);
+
+  a {
+    margin-right: 40px;
+  }
+}
+
+.cus-content {
+  background: transparent;
+  width: calc(100% - 100px);
+  text-align: center;
+  margin: 0 auto;
 }

@@ -48,12 +48,22 @@ const DeviceList: React.FC<Routes> = (routes: Routes) => {
     <div>
       <Table<Device>
         rowKey="id"
+        size="small"
+        style={{ background: 'white' }}
         dataSource={deviceList}
         pagination={{
           pageSize: 3
         }}
       >
-        <Table.Column<Device> key="name" title="设备名称" dataIndex="name" />
+        <Table.Column<Device> key="name" title="设备名称" dataIndex="name" className="devicename" />
+        <Table.Column<Device> key="deviceType" title="设备类型" dataIndex="deviceType" className="devicetype" />
+        <Table.Column<Device>
+          key="monitoringTargetType"
+          title="监控类型"
+          dataIndex="monitoringTargetType"
+          className="monitoringTargetType"
+        />
+        <Table.Column<Device> key="status" title="状态" dataIndex="status" className="status" />
       </Table>
     </div>
   );

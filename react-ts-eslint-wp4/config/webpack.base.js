@@ -109,7 +109,10 @@ module.exports = merge(webpackConfig, {
                                 options: {
                                     modules: false,
                                     javascriptEnabled: true,//启动JS
-                                    // modifyVars: { "@primary-color": "yellow" } //修改UI库里面的less变量
+                                    modifyVars: {
+                                        "@primary-color": "orange",
+                                        "@fontDefault": 'lightgreen'
+                                    } //修改UI库里面的less变量
                                 }
                             }
                         ]
@@ -118,19 +121,6 @@ module.exports = merge(webpackConfig, {
                         test: /\.svg$/,
                         use: ['@svgr/webpack']
                     },
-                    // {
-                    //     test: /\.(png|jpg|gif)$/,
-                    //     use: [
-                    //         {
-                    //             loader: 'file-loader',
-                    //             options: {
-                    //                 name: '[name].[hash:8].[ext]',
-                    //                 publicPath: 'assets/',
-                    //                 outputPath: 'assets/'
-                    //             }
-                    //         }
-                    //     ]
-                    // }
                     {
                         test: /\.(png|jpg|gif)$/,
                         loader: 'url-loader',
